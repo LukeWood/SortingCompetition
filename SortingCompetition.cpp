@@ -25,6 +25,8 @@ void SortingCompetition::setFileName(const string& inputFileName)
 //Reads data in.
 bool SortingCompetition::readData()
 {
+	//Also im trying to decide if c_strings are a better option or strings, we'll have to see if strcmp is significantly faster than comparing strings
+	//There might be some other way to compare strings I kind of forgot.
 	if(fname == "")
 	{
 		std::cout<<"Please use a file name.\n";
