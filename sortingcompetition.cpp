@@ -1,5 +1,6 @@
-#include "SortingCompetition.h"
+#include "sortingcompetition.h"
 #include <fstream>
+#include <vector>
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -36,10 +37,11 @@ bool SortingCompetition::readData()
 	std::ifstream in(fname.c_str(), ios::in);
 	
 	in>>numWords;
-	words = new string[numWords];
+	string temp;
 	for(int i = 0; i < numWords; i++)
 	{
-		in>>words[i];
+		in>>temp;
+		words.push_back(temp);
 	}
 	in.close();
 

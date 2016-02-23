@@ -1,4 +1,4 @@
-#include "SortingCompetition.h"
+#include "sortingcompetition.h"
 #include <fstream>
 #include <iostream>
 #include <string>
