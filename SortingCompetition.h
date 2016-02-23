@@ -17,7 +17,7 @@ private:
 	int numWords;
 	string* words;
 	
-	void deleteWords();
+	inline void deleteWords();
 public:
 
     //basic constructor that accepts an input

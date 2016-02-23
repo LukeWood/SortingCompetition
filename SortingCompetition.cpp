@@ -51,7 +51,7 @@ bool SortingCompetition::readData()
 	return true;
 }
 
-void SortingCompetition::deleteWords()
+inline void SortingCompetition::deleteWords()
 {
 	delete[] words;
 }
