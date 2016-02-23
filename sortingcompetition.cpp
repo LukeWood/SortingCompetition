@@ -4,16 +4,15 @@
 #include <string>
 #include <cstring>
 using std::string;
+using namespace std; 
 SortingCompetition::SortingCompetition()
 {
-	words = NULL;
 	fname = "";
 }
 
 //Pretty simple constructor, does exactly what you'd expect.
 SortingCompetition::SortingCompetition(const string& inputFileName)
 {
-	words = NULL;
 	fname = inputFileName;
 }
 
@@ -32,10 +31,9 @@ bool SortingCompetition::readData()
 	{
 		std::cout<<"Please use a file name.\n";
 		return false;
-		//testing git
 	}
 
-	std::ifstream in(fname.c_str());
+	std::ifstream in(fname.c_str(), ios::in);
 	if(words)
 	{
 		deleteWords();

@@ -15,8 +15,7 @@ private:
 
 	string fname;
 	int numWords;
-	string* words;
-	
+	vector<string> words;
 	vector<vector<string>> buckets;
 
 	void deleteWords();
