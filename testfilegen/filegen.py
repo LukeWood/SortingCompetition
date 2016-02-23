@@ -6,7 +6,8 @@ with open(sys.argv[1], "w+") as f:
 		length = int(i/10)
 		towrite = ""
 		for j in range(0, length + 1):
-			chartowrite = j
-			towrite = towrite + str(chr(((chartowrite+j)%221)+34))
+			nextc = (((chartowrite+j)%221)+34)
+			if(nextc < 255 and nextc > 0):
+				towrite+=str(chr(nextc))
 		f.write(towrite + '\n')
 	f.close()
