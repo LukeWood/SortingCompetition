@@ -73,6 +73,7 @@ inline int SortingCompetition::compareWords(const string& word1, const string& w
 void SortingCompetition::deleteWords()
 {
 	delete[] words;
+	words = NULL;
 }
 
 void SortingCompetition::sortData()
