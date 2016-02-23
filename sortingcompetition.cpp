@@ -34,10 +34,6 @@ bool SortingCompetition::readData()
 	}
 
 	std::ifstream in(fname.c_str(), ios::in);
-	if(words)
-	{
-		deleteWords();
-	}
 	
 	in>>numWords;
 	words = new string[numWords];
@@ -48,12 +44,6 @@ bool SortingCompetition::readData()
 	in.close();
 
 	return true;
-}
-
-void SortingCompetition::deleteWords()
-{
-	delete[] words;
-	words = NULL;
 }
 
 void SortingCompetition::sortData()

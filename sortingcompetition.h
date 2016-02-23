@@ -18,7 +18,6 @@ private:
 	vector<string> words;
 	vector<vector<string>> buckets;
 
-	void deleteWords();
 public:
 
     //basic constructor that accepts an input
