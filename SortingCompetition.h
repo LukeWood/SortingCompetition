@@ -15,7 +15,8 @@ private:
 
 	string fname;
 	int numwords;
-	char** words;
+
+	string* words;
 	
 	void deleteWords();
 public:

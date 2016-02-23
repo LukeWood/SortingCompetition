@@ -30,24 +30,16 @@ bool SortingCompetition::readData()
 		return false;
 	}
 	std::ifstream in(fname.c_str());
-	string temp;
 	if(words)
 	{
 		deleteWords();
 	}
 	
 	in>>numwords;
-	words = new char*[numwords];
+	words = new string[numwords];
 	for(int i = 0; i < numwords; i++)
 	{
-		in>>temp;
-		int len = temp.length();
-		words[i] = new char[len+1];
-		for(int j = 0; j <len; j++)
-		{
-			words[i][j] = temp[j]; 
-		}
-		words[i][len] = '\0';
+		in>>words[i];
 	}
 	in.close();
 
