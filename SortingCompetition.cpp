@@ -31,6 +31,7 @@ bool SortingCompetition::readData()
 	{
 		std::cout<<"Please use a file name.\n";
 		return false;
+		//testing git
 	}
 
 	std::ifstream in(fname.c_str());
