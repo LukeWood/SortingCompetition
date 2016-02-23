@@ -17,6 +17,8 @@ private:
 	int numWords;
 	string* words;
 	
+	string** buckets;
+
 	inline int compareWords(const string&, const string&);
 
 	void deleteWords();
