@@ -56,3 +56,25 @@ void SortingCompetition::deleteWords()
 	delete[] words;
 }
 
+ void SortingCompetition::sortData()
+{
+	string tracker;
+	string temp;
+
+	for (int i=0; i < numWords-1; i++)
+	{
+		tracker = i; //make the current index of the unsorted part = to tracker
+		
+		for (int j=i+1; j < numWords; j++)
+		{
+			if (words[j].size() < words[tracker].size() && words[j] < words[tracker])
+                  		 tracker=j;	//tracker will keep track of the index that the bigger value is in
+		}
+		//if swap is needed 
+          	if (tracker != i)
+            	{
+           	      temp = words[i];
+           	      words[i] = words[tracker];
+           	      words[tracker] = temp;
+           	 }
+	}

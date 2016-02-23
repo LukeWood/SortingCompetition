@@ -14,8 +14,7 @@ private:
     //2) your data structure must be linear (no trees).
 
 	string fname;
-	int numwords;
-
+	int numWords;
 	string* words;
 	
 	void deleteWords();
