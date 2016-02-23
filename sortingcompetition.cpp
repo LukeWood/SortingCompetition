@@ -67,7 +67,7 @@ void SortingCompetition::sortData()
 		
 		for (int j=i+1; j < numWords; j++)
 		{
-			if (words[j].size() < words[tracker].size() && words[j] < words[tracker])
+			if (words[j] < words[tracker])
                   		 tracker=j;	//tracker will keep track of the index that the bigger value is in
 		}
 		//if swap is needed 
