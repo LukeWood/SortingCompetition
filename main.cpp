@@ -2,8 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-using std::string;
-
+using namespace std;
 int main(int argc, char** argv)
 {
 	return 0; 
