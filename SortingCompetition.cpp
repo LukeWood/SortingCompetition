@@ -40,9 +40,9 @@ bool SortingCompetition::readData()
 		deleteWords();
 	}
 	
-	in>>numwords;
-	words = new string[numwords];
-	for(int i = 0; i < numwords; i++)
+	in>>numWords;
+	words = new string[numWords];
+	for(int i = 0; i < numWords; i++)
 	{
 		in>>words[i];
 	}
@@ -58,7 +58,7 @@ void SortingCompetition::deleteWords()
 
  void SortingCompetition::sortData()
 {
-	string tracker;
+	int tracker;
 	string temp;
 
 	for (int i=0; i < numWords-1; i++)
@@ -78,3 +78,4 @@ void SortingCompetition::deleteWords()
            	      words[tracker] = temp;
            	 }
 	}
+}
