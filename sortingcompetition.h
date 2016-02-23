@@ -1,5 +1,6 @@
 #include <string>
-using std::string;
+#include <vector>
+using namespace std;
 
 class SortingCompetition
 {
@@ -16,9 +17,8 @@ private:
 	string fname;
 	int numWords;
 	vector<string> words;
-	vector<vector<string>> buckets;
+	vector<vector<string> > buckets;
 
-	void deleteWords();
 public:
 
     //basic constructor that accepts an input
