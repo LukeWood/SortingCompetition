@@ -48,6 +48,14 @@ bool SortingCompetition::readData()
 	return true;
 }
 
+bool SortingCompetition::prepareData()
+{
+	for (int x = 0; x < words.size(); x++)
+	{
+		wordsCopy.push_back(words[x]); 
+	}
+}
+
 void SortingCompetition::sortData()
 {
 	int tracker;
@@ -71,3 +79,5 @@ void SortingCompetition::sortData()
            	 }
 	}
 }
+
+void SortingCompetition::outputData(const string& outputFileName);
