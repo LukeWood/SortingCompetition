@@ -17,9 +17,7 @@ private:
 	int numWords;
 	string* words;
 	
-	string** buckets;
-
-	inline int compareWords(const string&, const string&);
+	vector<vector<string>> buckets;
 
 	void deleteWords();
 public:

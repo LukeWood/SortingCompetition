@@ -52,24 +52,6 @@ bool SortingCompetition::readData()
 	return true;
 }
 
-//RETURN TYPES:
-//positive: word1 comes first
-//negative: word2 comes first
-//zero: equality
-inline int SortingCompetition::compareWords(const string& word1, const string& word2)
-{
-	if(word1.size() < word2.size())
-	{
-		return 1;
-	}
-	if(word2.size() < word1.size())
-	{
-		return -1;
-	}
-	//TODO This very well may be wrong, we might need -strcmp().
-	return strcmp(word1.c_str(),word2.c_str());
-}
-
 void SortingCompetition::deleteWords()
 {
 	delete[] words;
