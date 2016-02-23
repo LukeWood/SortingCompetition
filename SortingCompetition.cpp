@@ -2,6 +2,12 @@
 #include <fstream>
 #include <iostream>
 
+SortingCompetition::SortingCompetition()
+{
+	words = NULL;
+	fname = NULL;
+}
+
 //Pretty simple constructor, does exactly what you'd expect.
 SortingCompetition::SortingCompetition(const string& inputFileName)
 {
@@ -18,6 +24,11 @@ void SortingCompetition::setFileName(const string& inputFileName)
 //Reads data in.
 bool SortingCompetition::readData()
 {
+	if(fname == NULL)
+	{
+		std::cout<<"Please use a file name.\n";
+		return false;
+	}
 	std::ifstream in(fname.c_str());
 	string temp;
 	if(words)
