@@ -80,4 +80,12 @@ void SortingCompetition::sortData()
 	}
 }
 
-void SortingCompetition::outputData(const string& outputFileName);
+void SortingCompetition::outputData(const string& outputFileName)
+{
+	ofstream out(outputFileName.c_str());
+	for(int i = 0; i < numWords; i++)
+	{
+		out<<wordsCopy[i]<<'\n';		
+	}
+}
+
