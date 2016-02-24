@@ -19,7 +19,11 @@ private:
 	vector<string> words;
 	vector<string> wordsCopy; 
 	vector<vector<string> > buckets;
-
+	
+	void bubblesort();
+	void quicksort();
+	void introsort();
+		
 public:
 
     //basic constructor that accepts an input
