@@ -144,7 +144,6 @@ void SortingCompetition::quickSort(int x)
 	{
 		medianIndex = buckets[x].size()-1;
 	}
-	//partition
 	//put values into correct partitions
 	//repeat logn times
 }
