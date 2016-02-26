@@ -192,6 +192,13 @@ inline int SortingCompetition::findMedian(const string& first,const string& seco
 	}
 }
 
+inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
+{
+	
+
+	return 0;
+}
+
 void SortingCompetition::introSort(int x)
 {
 }
