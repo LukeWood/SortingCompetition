@@ -121,8 +121,8 @@ void SortingCompetition::bubbleSort(int x)
 			if(buckets[x][j] < buckets[x][j+1])
 			{
 				temp = buckets[x][j+1];
-				buckets[j+1] = buckets[x][j];
-				buckets[j] = temp;	
+				buckets[x][j+1] = buckets[x][j];
+				buckets[x][j] = temp;	
 			}
 		}
 	}
@@ -130,6 +130,39 @@ void SortingCompetition::bubbleSort(int x)
 
 void SortingCompetition::quickSort(int x)
 {
+	if(!(buckets[x].size() >= 3))
+	{
+		bubbleSort(x);
+		return;
+	}	
+	int medianIndex = findMedian(buckets[x][0],buckets[x][buckets[x].size()/2],buckets[x][buckets[x].size()-1]);
+       	if(medianIndex == 1)
+	{
+		medianIndex = buckets[x].size()/2;
+	}
+	else if(medianIndex == 2)
+	{
+		medianIndex = buckets[x].size()-1;
+	}
+	//partition
+	//put values into correct partitions
+	//repeat logn times
+}
+
+inline int SortingCompetition::findMedian(const string& first,const string& second,const string& third) const
+{
+	if((first < second && first > third) || (first > second && first < third))
+	{
+		return 0;
+	}
+	else if ((second < first && second > third) || (second < third && second > first))
+	{
+		return 1;
+	}
+	else
+	{
+		return 2;
+	}
 }
 
 void SortingCompetition::introSort(int x)
