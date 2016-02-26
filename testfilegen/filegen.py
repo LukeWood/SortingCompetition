@@ -1,7 +1,7 @@
 import random
 import string
-numwords = 1000
-with open("text.txt","w+") as f:
+numwords = 100000
+with open("test.txt","w+") as f:
 	f.write(str(numwords))
 	f.write('\n')
 	for i in range(0,numwords):
