@@ -113,6 +113,19 @@ void SortingCompetition::selectionSort(int x)
 }
 void SortingCompetition::bubbleSort(int x)
 {
+	string temp;
+	for(int i = 0; i < buckets[x].size(); i++)
+	{
+		for(int j = 0;  j < buckets[x].size()-1; j++)
+		{
+			if(buckets[x][j] < buckets[x][j+1])
+			{
+				temp = buckets[x][j+1];
+				buckets[j+1] = buckets[x][j];
+				buckets[j] = temp;	
+			}
+		}
+	}
 }
 
 void SortingCompetition::quickSort(int x)
