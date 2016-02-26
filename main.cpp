@@ -1,10 +1,17 @@
-#include "sortingcompetition.h"
-#include <fstream>
 #include <iostream>
-#include <string>
-using namespace std;
-int main(int argc, char** argv)
-{
-	return 0; 
-}
+#include <cstdlib>
+#include "sortingcompetition.h"
 
+using namespace std; 
+
+int main()
+{
+	cout << "bruh";
+	SortingCompetition sort("test.txt"); 
+	sort.readData(); 
+	sort.prepareData(); 
+	sort.sortData(); 
+	sort.outputData("output.txt"); 
+	return 0; 
+
+}

@@ -4,8 +4,10 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-using std::string;
-using namespace std; 
+#include <cstdlib>
+
+using namespace std;
+
 SortingCompetition::SortingCompetition()
 {
 	fname = "";
@@ -28,19 +30,19 @@ bool SortingCompetition::readData()
 {
 	//Also im trying to decide if c_strings are a better option or strings, we'll have to see if strcmp is significantly faster than comparing strings
 	//There might be some other way to compare strings I kind of forgot.
-	if(fname == "")
+	if (fname == "")
 	{
-		std::cout<<"Please use a file name.\n";
+		std::cout << "Please use a file name.\n";
 		return false;
 	}
 
 	std::ifstream in(fname.c_str(), ios::in);
-	
-	in>>numWords;
+
+	in >> numWords;
 	string temp;
-	for(int i = 0; i < numWords; i++)
+	for (int i = 0; i < numWords; i++)
 	{
-		in>>temp;
+		in >> temp;
 		words.push_back(temp);
 	}
 	in.close();
@@ -50,34 +52,76 @@ bool SortingCompetition::readData()
 
 bool SortingCompetition::prepareData()
 {
+	buckets.resize(81); 
 	for (int x = 0; x < words.size(); x++)
 	{
-		wordsCopy.push_back(words[x]); 
+		int size = words[x].size(); 
+		if (buckets[size].size() == 0)
+		{
+			bool exists = false; 
+			for (int x = 0; x < usedBuckets.size(); x++)
+				if (size == strtol(words[x].c_str(), NULL, 10))
+					exists = true; 
+			if (!exists)
+				usedBuckets.push_back(size); 
+		}
+		buckets[size].push_back(words[x]);
 	}
+	return true; 
 }
 
 void SortingCompetition::sortData()
 {
-	int tracker;
-	string temp;
+	for (int x = 0; x < usedBuckets.size(); x++)
+	{ 
+		int tracker;
+		string temp;
 
-	for (int i=0; i < numWords-1; i++)
-	{
-		tracker = i; //make the current index of the unsorted part = to tracker
-		
-		for (int j=i+1; j < numWords; j++)
+		for (int i = 0; i < buckets[x].size(); i++)
 		{
-			if (words[j] < words[tracker])
-                  		 tracker=j;	//tracker will keep track of the index that the bigger value is in
+			tracker = i; //make the current index of the unsorted part = to tracker
+
+			for (int j = i + 1; j <buckets[x].size(); j++)
+			{
+				if (buckets[x][j] < buckets[x][tracker])
+					tracker = j;	//tracker will keep track of the index that the bigger value is in
+			}
+			//if swap is needed 
+			if (tracker != i)
+			{
+				temp = buckets[x][i];
+				buckets[x][i] = buckets[x][tracker];
+				buckets[x][tracker] = temp;
+			}
 		}
-		//if swap is needed 
-          	if (tracker != i)
-            	{
-           	      temp = words[i];
-           	      words[i] = words[tracker];
-           	      words[tracker] = temp;
-           	 }
 	}
 }
 
-void SortingCompetition::outputData(const string& outputFileName);
+void SortingCompetition::outputData(const string& outputFileName)
+{
+	ofstream out(outputFileName.c_str());
+	for (int i = 1; i < buckets.size(); i++)
+	{
+		for (int k = 0; k < buckets[i].size(); k++)
+		{
+			out << buckets[i][k] + '\n'; 
+		}
+	}
+}
+
+void SortingCompetition::selectionSort()
+{
+
+}
+void SortingCompetition::bubbleSort()
+{
+}
+
+void SortingCompetition::quickSort()
+{
+}
+
+void SortingCompetition::introSort()
+{
+}
+
