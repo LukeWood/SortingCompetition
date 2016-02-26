@@ -123,5 +123,4 @@ void SortingCompetition::quickSort()
 
 void SortingCompetition::introSort()
 {
-}
 

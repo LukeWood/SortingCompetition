@@ -25,7 +25,6 @@ private:
 	void bubbleSort();
 	void quickSort();
 	void introSort();
-
 public:
 
 	//basic constructor that accepts an input
