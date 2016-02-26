@@ -73,28 +73,7 @@ bool SortingCompetition::prepareData()
 void SortingCompetition::sortData()
 {
 	for (int x = 0; x < usedBuckets.size(); x++)
-	{ 
-		int tracker;
-		string temp;
-
-		for (int i = 0; i < buckets[x].size(); i++)
-		{
-			tracker = i; //make the current index of the unsorted part = to tracker
-
-			for (int j = i + 1; j <buckets[x].size(); j++)
-			{
-				if (buckets[x][j] < buckets[x][tracker])
-					tracker = j;	//tracker will keep track of the index that the bigger value is in
-			}
-			//if swap is needed 
-			if (tracker != i)
-			{
-				temp = buckets[x][i];
-				buckets[x][i] = buckets[x][tracker];
-				buckets[x][tracker] = temp;
-			}
-		}
-	}
+		selectionSort(x); 
 }
 
 void SortingCompetition::outputData(const string& outputFileName)
@@ -109,18 +88,37 @@ void SortingCompetition::outputData(const string& outputFileName)
 	}
 }
 
-void SortingCompetition::selectionSort()
+void SortingCompetition::selectionSort(int x)
 {
+	int tracker;
+	string temp;
+
+	for (int i = 0; i < buckets[x].size(); i++)
+	{
+		tracker = i; //make the current index of the unsorted part = to tracker
+		for (int j = i + 1; j <buckets[x].size(); j++)
+		{
+			if (buckets[x][j] < buckets[x][tracker])
+				tracker = j;	//tracker will keep track of the index that the bigger value is in
+		}
+		//if swap is needed 
+		if (tracker != i)
+		{
+			temp = buckets[x][i];
+			buckets[x][i] = buckets[x][tracker];
+			buckets[x][tracker] = temp;
+		}
+	}
 
 }
-void SortingCompetition::bubbleSort()
+void SortingCompetition::bubbleSort(int x)
 {
 }
 
-void SortingCompetition::quickSort()
+void SortingCompetition::quickSort(int x)
 {
 }
 
-void SortingCompetition::introSort()
+void SortingCompetition::introSort(int x)
 {
-
+}

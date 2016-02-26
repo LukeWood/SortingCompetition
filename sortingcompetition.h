@@ -21,10 +21,10 @@ private:
 	vector<int> usedBuckets;
 	vector<vector<string> > buckets;
 
-	void selectionSort();
-	void bubbleSort();
-	void quickSort();
-	void introSort();
+	void selectionSort(int);
+	void bubbleSort(int);
+	void quickSort(int);
+	void introSort(int);
 public:
 
 	//basic constructor that accepts an input
