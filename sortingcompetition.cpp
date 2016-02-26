@@ -144,7 +144,35 @@ void SortingCompetition::quickSort(int x)
 	{
 		medianIndex = buckets[x].size()-1;
 	}
-	//put values into correct partitions
+	int i1=0;
+	int i2=0;
+	string less;
+	string greater;
+
+	while(i1 < buckets[x].size())
+	{
+		//Enter here if the word at i1 is less than the median word
+		if(buckets[x][i1] < buckets[x][medianIndex])
+		{
+			less = buckets[x][i1];
+			while(!(buckets[x][i2] > buckets[x][medianIndex]) && i2 < buckets[x].size())
+			{
+				if(buckets[x][i2] > buckets[x][medianIndex])
+				{
+					//Swap, however this doesn't guarentee that theyre on the right side of the median.  
+					//Maybe I need to put the median directly in the middle of the vector?
+					greater = buckets[x][i2];
+					buckets[x][i1] = greater;
+					buckets[x][i2] = less;
+				}
+			}
+		}
+		else if(buckets[x][i1] > buckets[x][medianIndex])
+		{
+			greater = buckets[x][i1];
+		}
+		i1++;
+	}
 	//repeat logn times
 }
 
