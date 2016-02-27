@@ -22,14 +22,15 @@ private:
 	vector<int> usedBuckets;
 	vector<vector<string> > buckets;
 
+	int median(vector<string>, int, int);
+	void quickSort2(vector<string>, int, int); 
+	void swap(string &, string &);
 	void selectionSort(int);
 	void bubbleSort(int);
 	void quickSort(int);
+	int findMedian(const string& first,const string& second,const string& third) const; 
+	int findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const;
 	void introSort(int);
-
-	//sub functions
-	inline int findMedian(const string&,const string&,const string&) const;
-	inline int findMedian5(const string&,const string&, const string&, const string&, const string&) const;
 public:
 
 	//basic constructor that accepts an input

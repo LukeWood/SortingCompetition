@@ -79,7 +79,10 @@ void SortingCompetition::sortData()
 		buckets[size].push_back(wordsCopy[i]);
 	}
 	for (int x = 0; x < usedBuckets.size(); x++)
-		selectionSort(usedBuckets[x]); 
+	{
+		//selectionSort(usedBuckets[x]);
+		quickSort2(buckets[usedBuckets[x]], 0, buckets[usedBuckets[x]].size() - 1); 
+	} 
 }
 
 void SortingCompetition::outputData(const string& outputFileName)
@@ -196,6 +199,55 @@ inline int SortingCompetition::findMedian(const string& first,const string& seco
 	{
 		return 2;
 	}
+}
+
+
+void SortingCompetition::quickSort2(vector<string> a, int start, int end) 
+{
+	int med;
+	med = median(a, start, end);
+	quickSort2(a, start, med);
+	quickSort2(a, med, end);
+}
+int SortingCompetition::median(vector<string> a, int p, int r) 
+{
+	string x = a[p];
+	string y = a[(r - p) / 2 + p];
+	string z = a[r - 1];
+	int i = p - 1; 
+	int j = r;
+	if (y>x && y<z || y>z && y<x) 
+		x = y;
+	else if (z>x && z<y || z>y && z<x) 
+		x = z;
+	while (true) 
+	{
+		do 
+		{ 
+			j--;
+		} while (a[j] > x);
+
+		do 
+		{ 
+			i++;
+		} while (a[i] < x);
+
+		if (i < j)
+		{
+			string temp = a[i]; 
+			x = a[j]; 
+			y = temp;
+		}
+		else return j + 1;
+	}
+}
+
+void SortingCompetition::swap(string &x, string &y)
+{
+
+	string temp = x; 
+	x = y; 
+	y = temp;
 }
 
 inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
