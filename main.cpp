@@ -4,9 +4,8 @@
 
 using namespace std; 
 
-int main()
+int main(int argc, char** argv)
 {
-	cout << "bruh";
 	SortingCompetition sort("test.txt"); 
 	sort.readData(); 
 	sort.prepareData(); 

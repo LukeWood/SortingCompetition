@@ -52,28 +52,34 @@ bool SortingCompetition::readData()
 
 bool SortingCompetition::prepareData()
 {
-	buckets.resize(81); 
+	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
 	{
-		int size = words[x].size(); 
+		int size = words[x].size();
 		if (buckets[size].size() == 0)
 		{
-			bool exists = false; 
+			bool exists = false;
 			for (int x = 0; x < usedBuckets.size(); x++)
 				if (size == strtol(words[x].c_str(), NULL, 10))
-					exists = true; 
+					exists = true;
 			if (!exists)
-				usedBuckets.push_back(size); 
+				usedBuckets.push_back(size);
 		}
-		buckets[size].push_back(words[x]);
+		buckets[size].reserve(buckets[size].size() + 1);
+		wordsCopy.push_back(words[x]); 
 	}
-	return true; 
+	return true;
 }
 
 void SortingCompetition::sortData()
 {
+	for (int i = 0; i < wordsCopy.size(); i++)
+	{
+		int size = words[i].size();
+		buckets[size].push_back(wordsCopy[i]);
+	}
 	for (int x = 0; x < usedBuckets.size(); x++)
-		selectionSort(x); 
+		selectionSort(usedBuckets[x]); 
 }
 
 void SortingCompetition::outputData(const string& outputFileName)
