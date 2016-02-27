@@ -26,6 +26,10 @@ private:
 	void bubbleSort(int);
 	void quickSort(int);
 	void introSort(int);
+
+	//sub functions
+	inline int findMedian(const string&,const string&,const string&) const;
+	inline int findMedian5(const string&,const string&, const string&, const string&, const string&) const;
 public:
 
 	//basic constructor that accepts an input

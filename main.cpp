@@ -12,5 +12,4 @@ int main(int argc, char** argv)
 	sort.sortData(); 
 	sort.outputData("output.txt"); 
 	return 0; 
-
 }

@@ -119,12 +119,92 @@ void SortingCompetition::selectionSort(int x)
 }
 void SortingCompetition::bubbleSort(int x)
 {
+	string temp;
+	for(int i = 0; i < buckets[x].size(); i++)
+	{
+		for(int j = 0;  j < buckets[x].size()-1; j++)
+		{
+			if(buckets[x][j] < buckets[x][j+1])
+			{
+				temp = buckets[x][j+1];
+				buckets[x][j+1] = buckets[x][j];
+				buckets[x][j] = temp;	
+			}
+		}
+	}
 }
 
 void SortingCompetition::quickSort(int x)
 {
+	if(!(buckets[x].size() >= 3))
+	{
+		bubbleSort(x);
+		return;
+	}	
+	int medianIndex = findMedian(buckets[x][0],buckets[x][buckets[x].size()/2],buckets[x][buckets[x].size()-1]);
+       	if(medianIndex == 1)
+	{
+		medianIndex = buckets[x].size()/2;
+	}
+	else if(medianIndex == 2)
+	{
+		medianIndex = buckets[x].size()-1;
+	}
+	int i1=0;
+	int i2=0;
+	string less;
+	string greater;
+
+	while(i1 < buckets[x].size())
+	{
+		//Enter here if the word at i1 is less than the median word
+		if(buckets[x][i1] < buckets[x][medianIndex])
+		{
+			less = buckets[x][i1];
+			while(!(buckets[x][i2] > buckets[x][medianIndex]) && i2 < buckets[x].size())
+			{
+				if(buckets[x][i2] > buckets[x][medianIndex])
+				{
+					//Swap, however this doesn't guarentee that theyre on the right side of the median.  
+					//Maybe I need to put the median directly in the middle of the vector?
+					greater = buckets[x][i2];
+					buckets[x][i1] = greater;
+					buckets[x][i2] = less;
+				}
+			}
+		}
+		else if(buckets[x][i1] > buckets[x][medianIndex])
+		{
+			greater = buckets[x][i1];
+		}
+		i1++;
+	}
+	//repeat logn times
+}
+
+inline int SortingCompetition::findMedian(const string& first,const string& second,const string& third) const
+{
+	if((first < second && first > third) || (first > second && first < third))
+	{
+		return 0;
+	}
+	else if ((second < first && second > third) || (second < third && second > first))
+	{
+		return 1;
+	}
+	else
+	{
+		return 2;
+	}
+}
+
+inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
+{
+	
+	return 0;
 }
 
 void SortingCompetition::introSort(int x)
 {
+
 }
