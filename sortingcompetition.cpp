@@ -214,6 +214,7 @@ int SortingCompetition::median(vector<string> a, int p, int r)
 	string x = a[p];
 	string y = a[(r - p) / 2 + p];
 	string z = a[r - 1];
+	
 	int i = p - 1; 
 	int j = r;
 	if (y>x && y<z || y>z && y<x) 
@@ -222,6 +223,8 @@ int SortingCompetition::median(vector<string> a, int p, int r)
 		x = z;
 	while (true) 
 	{
+		cout<<"i: "<<i<<'\n';
+		cout<<"j: "<<j<<'\n';
 		do 
 		{ 
 			j--;
