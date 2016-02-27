@@ -205,6 +205,8 @@ inline int SortingCompetition::findMedian(const string& first,const string& seco
 void SortingCompetition::quickSort2(vector<string> a, int start, int end) 
 {
 	int med;
+	if (end - start<2) 
+		return;
 	med = median(a, start, end);
 	quickSort2(a, start, med);
 	quickSort2(a, med, end);
