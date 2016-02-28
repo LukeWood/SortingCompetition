@@ -79,7 +79,7 @@ void SortingCompetition::sortData()
 	}
 	for (int x = 0; x < usedBuckets.size(); x++)
 	{
-		selectionSort(usedBuckets[x]);
+		//selectionSort(usedBuckets[x]);
 		quickSort2(x, 0, buckets[usedBuckets[x]].size()); 
 	} 
 }
