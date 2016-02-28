@@ -5,7 +5,6 @@
 #include <string>
 #include <cstring>
 #include <cstdlib>
-
 using namespace std;
 
 SortingCompetition::SortingCompetition()
@@ -75,6 +74,7 @@ int count  = 0;
 
 void SortingCompetition::sortData()
 {
+
 	for (int i = 0; i < wordsCopy.size(); i++)
 	{
 		int size = words[i].size();
@@ -82,8 +82,9 @@ void SortingCompetition::sortData()
 	}
 	for (int x = 0; x < buckets.size(); x++)
 	{
-		//selectionSort(usedBuckets[x]);
+		//selectionSort(x);
 		quickSort2(x, 0, buckets[x].size()); 
+		//sort(buckets[x].begin(),buckets[x].end()); 
 	} 
 }
 
