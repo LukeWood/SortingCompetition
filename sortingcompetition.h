@@ -17,6 +17,7 @@ private:
 
 	string fname;
 	int numWords;
+int count2;
 	vector<string> words;
 	vector<string> wordsCopy; 
 	vector<int> usedBuckets;

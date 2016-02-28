@@ -51,21 +51,24 @@ bool SortingCompetition::readData()
 
 bool SortingCompetition::prepareData()
 {
+int count  = 0; 
 	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
 	{
 		int size = words[x].size();
-		if (buckets[size].size() == 0)
-		{
-			bool exists = false;
-			for (int x = 0; x < usedBuckets.size(); x++)
-				if (size == strtol(words[x].c_str(), NULL, 10))
-					exists = true;
-			if (!exists)
-				usedBuckets.push_back(size);
-		}
+		//if (buckets[size].size() == 0)
+	//	{
+	//		bool exists = false;
+	//		for (int x = 0; x < usedBuckets.size(); x++)
+	//			if (size == strtol(words[x].c_str(), NULL, 10))
+	//				exists = true;
+	//		if (!exists)
+	//			usedBuckets.push_back(size);
+	//	}
 		buckets[size].reserve(buckets[size].size() + size);
 		wordsCopy.push_back(words[x]); 
+		cout << count++ << "\n"; 
+		
 	}
 	return true;
 }
@@ -77,10 +80,10 @@ void SortingCompetition::sortData()
 		int size = words[i].size();
 		buckets[size].push_back(wordsCopy[i]);
 	}
-	for (int x = 0; x < usedBuckets.size(); x++)
+	for (int x = 0; x < buckets.size(); x++)
 	{
 		//selectionSort(usedBuckets[x]);
-		quickSort2(x, 0, buckets[usedBuckets[x]].size()); 
+		quickSort2(x, 0, buckets[x].size()); 
 	} 
 }
 
@@ -212,9 +215,9 @@ void SortingCompetition::quickSort2(int a, int start, int end)
 }
 int SortingCompetition::median(int a, int p, int r) 
 {
-	string x = buckets[usedBuckets[a]][p];
-	string y = buckets[usedBuckets[a]][(r - p) / 2 + p];
-	string z = buckets[usedBuckets[a]][r - 1];
+	string x = buckets[a][p];
+	string y = buckets[a][(r - p) / 2 + p];
+	string z = buckets[a][r - 1];
 	
 	int i = p - 1; 
 	int j = r;
@@ -227,20 +230,24 @@ int SortingCompetition::median(int a, int p, int r)
 		do 
 		{ 
 			j--;
-		} while (buckets[usedBuckets[a]][j] > x);
+		} while (buckets[a][j] > x);
 
 		do 
 		{ 
 			i++;
-		} while (buckets[usedBuckets[a]][i] < x);
+		} while (buckets[a][i] < x);
 
 		if (i < j)
 		{
-			string temp = buckets[usedBuckets[a]][i]; 
-			buckets[usedBuckets[a]][i] = buckets[usedBuckets[a]][j];
- 			buckets[usedBuckets[a]][j] = temp; 
+			string temp = buckets[a][i]; 
+			buckets[a][i] = buckets[a][j];
+ 			buckets[a][j] = temp; 
 		}
-		else return j + 1;
+		else 
+{
+cout << count2++; 
+return j + 1;
+}
 	}
 }
 
