@@ -22,8 +22,8 @@ private:
 	vector<int> usedBuckets;
 	vector<vector<string> > buckets;
 
-	int median(vector<string>, int, int);
-	void quickSort2(vector<string>, int, int); 
+	int median(int, int, int);
+	void quickSort2(int, int, int); 
 	void swap(string &, string &);
 	void selectionSort(int);
 	void bubbleSort(int);

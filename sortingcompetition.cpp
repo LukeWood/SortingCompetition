@@ -37,7 +37,6 @@ bool SortingCompetition::readData()
 	}
 
 	std::ifstream in(fname.c_str(), ios::in);
-
 	in >> numWords;
 	string temp;
 	for (int i = 0; i < numWords; i++)
@@ -65,7 +64,7 @@ bool SortingCompetition::prepareData()
 			if (!exists)
 				usedBuckets.push_back(size);
 		}
-		buckets[size].reserve(buckets[size].size() + 1);
+		buckets[size].reserve(buckets[size].size() + size);
 		wordsCopy.push_back(words[x]); 
 	}
 	return true;
@@ -80,8 +79,8 @@ void SortingCompetition::sortData()
 	}
 	for (int x = 0; x < usedBuckets.size(); x++)
 	{
-		//selectionSort(usedBuckets[x]);
-		quickSort2(buckets[usedBuckets[x]], 0, buckets[usedBuckets[x]].size() - 1); 
+		selectionSort(usedBuckets[x]);
+		quickSort2(x, 0, buckets[usedBuckets[x]].size()); 
 	} 
 }
 
@@ -202,7 +201,7 @@ inline int SortingCompetition::findMedian(const string& first,const string& seco
 }
 
 
-void SortingCompetition::quickSort2(vector<string> a, int start, int end) 
+void SortingCompetition::quickSort2(int a, int start, int end) 
 {
 	int med;
 	if (end - start<2) 
@@ -211,11 +210,11 @@ void SortingCompetition::quickSort2(vector<string> a, int start, int end)
 	quickSort2(a, start, med);
 	quickSort2(a, med, end);
 }
-int SortingCompetition::median(vector<string> a, int p, int r) 
+int SortingCompetition::median(int a, int p, int r) 
 {
-	string x = a[p];
-	string y = a[(r - p) / 2 + p];
-	string z = a[r - 1];
+	string x = buckets[usedBuckets[a]][p];
+	string y = buckets[usedBuckets[a]][(r - p) / 2 + p];
+	string z = buckets[usedBuckets[a]][r - 1];
 	
 	int i = p - 1; 
 	int j = r;
@@ -225,23 +224,21 @@ int SortingCompetition::median(vector<string> a, int p, int r)
 		x = z;
 	while (true) 
 	{
-		cout<<"i: "<<i<<'\n';
-		cout<<"j: "<<j<<'\n';
 		do 
 		{ 
 			j--;
-		} while (a[j] > x);
+		} while (buckets[usedBuckets[a]][j] > x);
 
 		do 
 		{ 
 			i++;
-		} while (a[i] < x);
+		} while (buckets[usedBuckets[a]][i] < x);
 
 		if (i < j)
 		{
-			string temp = a[i]; 
-			x = a[j]; 
-			y = temp;
+			string temp = buckets[usedBuckets[a]][i]; 
+			buckets[usedBuckets[a]][i] = buckets[usedBuckets[a]][j];
+ 			buckets[usedBuckets[a]][j] = temp; 
 		}
 		else return j + 1;
 	}
