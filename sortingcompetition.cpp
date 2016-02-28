@@ -67,7 +67,7 @@ int count  = 0;
 	//	}
 		buckets[size].reserve(buckets[size].size() + size);
 		wordsCopy.push_back(words[x]); 
-		cout << count++ << "\n"; 
+		//cout << count++ << "\n"; 
 		
 	}
 	return true;
@@ -245,7 +245,7 @@ int SortingCompetition::median(int a, int p, int r)
 		}
 		else 
 {
-cout << count2++; 
+//cout << count2++; 
 return j + 1;
 }
 	}
