@@ -17,7 +17,7 @@ private:
 
 	string fname;
 	int numWords;
-int count2;
+	int count2;
 	vector<string> words;
 	vector<string> wordsCopy; 
 	vector<int> usedBuckets;
@@ -32,6 +32,8 @@ int count2;
 	int findMedian(const string& first,const string& second,const string& third) const; 
 	int findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const;
 	void introSort(int);
+
+	void innerIntroSort(int, int, int, int);
 public:
 
 	//basic constructor that accepts an input

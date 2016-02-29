@@ -268,5 +268,23 @@ inline int SortingCompetition::findMedian5(const string& first,const string& sec
 
 void SortingCompetition::introSort(int x)
 {
+	int maxdepth/* = log(buckets[x].size())*/;
+	innerIntroSort(x,0,buckets[x].size(),maxdepth);
+}
 
+void SortingCompetition::innerIntroSort(int x, int start, int end, int maxdepth) 
+{
+	//This might need to be 2
+	if(end-start <=0)
+		return;
+	else if(maxdepth == 0)
+	{
+		//heapsort(x);
+	}
+	else
+	{
+		int med = median(x,start,end);
+		innerIntroSort(x,start,med, maxdepth);
+		innerIntroSort(x,med,end, maxdepth);
+	}
 }
