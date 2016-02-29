@@ -275,7 +275,7 @@ void SortingCompetition::introSort(int x)
 void SortingCompetition::innerIntroSort(int x, int start, int end, int maxdepth) 
 {
 	//This might need to be 2
-	if(end-start <=0)
+	if(end-start <=2)
 		return;
 	else if(maxdepth == 0)
 	{
@@ -284,7 +284,7 @@ void SortingCompetition::innerIntroSort(int x, int start, int end, int maxdepth)
 	else
 	{
 		int med = median(x,start,end);
-		innerIntroSort(x,start,med, maxdepth);
-		innerIntroSort(x,med,end, maxdepth);
+		innerIntroSort(x,start,med, maxdepth-1);
+		innerIntroSort(x,med,end, maxdepth-1);
 	}
 }
