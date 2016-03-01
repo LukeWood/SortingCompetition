@@ -32,6 +32,8 @@ private:
 	void selectionSort(int);
 	void bubbleSort(int);
 	void quickSort(int);
+	void heapSort(int,int,int);
+
 	int findMedian(const string& first,const string& second,const string& third) const; 
 	int findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const;
 	void introSort(int);
