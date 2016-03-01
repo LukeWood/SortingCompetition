@@ -18,6 +18,9 @@ private:
 	string fname;
 	int numWords;
 	int count2;
+
+	int maxDepth;
+
 	vector<string> words;
 	vector<string> wordsCopy; 
 	vector<int> usedBuckets;
