@@ -1,12 +1,12 @@
 import random
 import string
-numwords = 100000
+numwords = 20000
 with open("test.txt","w+") as f:
 	f.write(str(numwords))
 	f.write('\n')
 	for i in range(0,numwords):
 		toprint = ""
-		for j in range(0,random.randrange(1,79)):
+		for j in range(0,random.randrange(1,10)):
 			toadd = random.choice(string.ascii_letters)
 			if(toadd != '\n'):
 				toprint+=random.choice(string.ascii_letters)
