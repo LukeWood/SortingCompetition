@@ -247,31 +247,28 @@ int SortingCompetition::median(int a, int p, int r)
  			buckets[a][j] = temp; 
 		}
 		else 
-{
-//cout << count2++; 
-return j + 1;
-}
+		{
+		//cout << count2++; 
+		return j + 1;
+		}
 	}
 }
 
 void SortingCompetition::swap(string &x, string &y)
 {
-
 	string temp = x; 
 	x = y; 
 	y = temp;
 }
 
 inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
-{
-	
+{	
 	return 0;
 }
 
 void SortingCompetition::introSort(int x)
 {
-	innerIntroSort(x,0,buckets[x].size(),maxdepth);
-	
+	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
 void SortingCompetition::innerIntroSort(int x, int start, int end, currdepth) 
