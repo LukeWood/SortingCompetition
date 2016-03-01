@@ -19,7 +19,7 @@ private:
 	int numWords;
 	int count2;
 
-	int maxDepth;
+	int maxdepth;
 
 	vector<string> words;
 	vector<string> wordsCopy; 

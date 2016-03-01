@@ -271,7 +271,7 @@ void SortingCompetition::introSort(int x)
 	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
-void SortingCompetition::innerIntroSort(int x, int start, int end, currdepth) 
+void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
 {
 	//This might need to be 2
 	if(end-start <=2)
