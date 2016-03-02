@@ -50,9 +50,8 @@ bool SortingCompetition::readData()
 
 bool SortingCompetition::prepareData()
 {
-maxdepth/* = log(buckets[x].size())*/;
-
-int count  = 0; 
+	maxdepth/* = log(buckets[x].size())*/;
+	int count  = 0; 
 	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
 	{
@@ -287,18 +286,22 @@ void SortingCompetition::swap(string &x, string &y)
 }
 
 inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
-{	
+{
+		
 	return 0;
 }
 
 void SortingCompetition::introSort(int x)
 {
+	maxdepth = 0/*log2(buckets[x].size())*/;
 	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
+
+
 void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
 {
-	//This might need to be 2
+	//This might need to be a different value
 	if(end-start <=2)
 		return;
 	else if(currdepth == 0)
