@@ -6,6 +6,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <algorithm>
+#include <cmath>
 using namespace std;
 
 SortingCompetition::SortingCompetition()
@@ -294,7 +295,7 @@ inline int SortingCompetition::findMedian5(const string& first,const string& sec
 
 void SortingCompetition::introSort(int x)
 {
-	maxdepth = 0/*log2(buckets[x].size())*/;
+	maxdepth = log2(buckets[x].size());
 	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
@@ -307,7 +308,7 @@ void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth)
 		return;
 	else if(currdepth == 0)
 	{
-		//heapsort(x);
+		insertionSort(x,start,end);
 	}
 	else
 	{
