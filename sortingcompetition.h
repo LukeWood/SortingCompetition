@@ -34,6 +34,7 @@ private:
 	void quickSort(int);
 	int findMedian(const string& first,const string& second,const string& third) const; 
 	int findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const;
+	void insertionSort(int,int,int); 
 	void introSort(int);
 
 	void innerIntroSort(int, int, int, int);

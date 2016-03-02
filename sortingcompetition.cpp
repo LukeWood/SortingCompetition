@@ -212,15 +212,26 @@ void SortingCompetition::quickSort2(int a, int start, int end)
 	int med;
 	if (end - start<2) 
 		return;
-	med = median(a, start, end);
-	quickSort2(a, start, med);
-	quickSort2(a, med, end);
+	if (end - start < 9)
+        {
+        	insertionSort(a, start, end);
+        }
+	else
+	{
+		med = median(a, start, end);
+		quickSort2(a, start, med);
+		quickSort2(a, med, end);
+	}
 }
 int SortingCompetition::median(int a, int p, int r) 
 {
 	string x = buckets[a][p];
 	string y = buckets[a][(r - p) / 2 + p];
 	string z = buckets[a][r - 1];
+	//string y = buckets[a][(r-p) / 4]
+	//string z = buckets[a][(r-p) / 2 + p]
+	//string a = buckets[a][p]
+	//string b = buckets[a][p]
 	
 	int i = p - 1; 
 	int j = r;
@@ -254,6 +265,20 @@ int SortingCompetition::median(int a, int p, int r)
 	}
 }
 
+void SortingCompetition::insertionSort(int a, int start, int end)
+{
+    for (int x = start + 1; x < end; x++)
+    {
+        string val = buckets[a][x];
+        int j = x - 1;
+        while (j >= 0 && val < buckets[a][j])
+        {
+            buckets[a][j + 1] = buckets[a][j];
+            j--;
+        }
+        buckets[a][j + 1] = val;
+    }
+}
 void SortingCompetition::swap(string &x, string &y)
 {
 	string temp = x; 
