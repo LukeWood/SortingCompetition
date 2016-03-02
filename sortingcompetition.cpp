@@ -53,7 +53,7 @@ bool SortingCompetition::readData()
 
 SortingCompetition::~SortingCompetition()
 {
-	//clearMemory();
+	clearMemory();
 }
 
 bool SortingCompetition::prepareData()
@@ -258,7 +258,7 @@ void SortingCompetition::clearMemory()
 {
 	for(int i = 0; i < words.size(); i++)
 	{
-	//	delete[] words[i];
+		delete words[i];
 	}
 	words.clear();
 	wordsCopy.clear();
