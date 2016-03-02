@@ -54,7 +54,7 @@ bool SortingCompetition::readData()
 
 SortingCompetition::~SortingCompetition()
 {
-//	clearMemory();
+	clearMemory();
 }
 
 bool SortingCompetition::prepareData()
@@ -260,5 +260,7 @@ void SortingCompetition::clearMemory()
 	{
 		delete[] words[i];
 	}
-	words.erase(words.begin(),words.end());
+	words.clear();
+	wordsCopy.clear();
+	buckets.clear();	
 }
