@@ -251,3 +251,22 @@ void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth)
 		innerIntroSort(x,med,end, currdepth-1);
 	}
 }
+
+void SortingCompetition::clearMemory(bool nwords)
+{
+	if(nwords)
+	{
+		for(int i = 0; i < words.size(); i++)
+		{
+			delete[] words[i];
+		}
+	}
+	for(int i = 0; i < wordscopy.size(); i++)
+	{
+		delete[] wordscopy[i];
+	}
+	for(int i = 0; i < buckets.size(); i++)
+	{
+		delete[] buckets[i];
+	}	
+}

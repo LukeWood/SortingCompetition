@@ -39,6 +39,8 @@ private:
 	void introSort(int);
 
 	void innerIntroSort(int, int, int, int);
+	void clearMemory();
+
 public:
 
 	//basic constructor that accepts an input
