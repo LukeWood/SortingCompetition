@@ -260,13 +260,19 @@ void SortingCompetition::clearMemory(bool nwords)
 		{
 			delete[] words[i];
 		}
+		words.clear();
 	}
-	for(int i = 0; i < wordscopy.size(); i++)
+	for(int i = 0; i < wordsCopy.size(); i++)
 	{
-		delete[] wordscopy[i];
+		delete[] wordsCopy[i];
 	}
+	wordsCopy.clear();
 	for(int i = 0; i < buckets.size(); i++)
 	{
-		delete[] buckets[i];
+		for(int j = 0; j < buckets[i].size(); j++)
+		{
+			delete[] buckets[i][j];
+		}
 	}	
+	buckets.clear();
 }
