@@ -47,7 +47,7 @@ public:
 	//file name
 	SortingCompetition();
 	SortingCompetition(const string& inputFileName);
-
+	~SortingCompetition();
 
 	//set the input file name
 	void setFileName(const string& inputFileName);

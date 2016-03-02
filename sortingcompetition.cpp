@@ -51,8 +51,14 @@ bool SortingCompetition::readData()
 	return true;
 }
 
-bool SortingCompetition::prepareData()
+SortingCompetition::~SortingCompetition()
 {
+	clearMemory(false);
+}
+
+bool SortingCompetition::prepareData()
+{	
+	clearMemory(true);
 	int count  = 0; 
 	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
@@ -273,6 +279,7 @@ void SortingCompetition::clearMemory(bool nwords)
 		{
 			delete[] buckets[i][j];
 		}
+		buckets[i].clear();
 	}	
 	buckets.clear();
 }
