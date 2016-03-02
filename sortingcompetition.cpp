@@ -105,7 +105,6 @@ void SortingCompetition::outputData(const string& outputFileName)
 			out << buckets[i][k] + '\n'; 
 		}
 	}
-	clearMemory();
 }
 
 void SortingCompetition::selectionSort(int x)
