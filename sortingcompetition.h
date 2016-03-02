@@ -21,14 +21,14 @@ private:
 
 	int maxdepth;
 
-	vector<string> words;
-	vector<string> wordsCopy; 
+	vector<string*> words;
+	vector<string*> wordsCopy; 
 	vector<int> usedBuckets;
-	vector<vector<string> > buckets;
+	vector<vector<string*> > buckets;
 
 	int median(int, int, int);
 	void quickSort2(int, int, int); 
-	void swap(string &, string &);
+	void swap(string* &, string* &);
 	void selectionSort(int);
 	void bubbleSort(int);
 	void quickSort(int);

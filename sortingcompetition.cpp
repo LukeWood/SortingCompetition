@@ -43,7 +43,8 @@ bool SortingCompetition::readData()
 	for (int i = 0; i < numWords; i++)
 	{
 		in >> temp;
-		words.push_back(temp);
+		string* t = new string(temp);
+		words.push_back(t);
 	}
 	in.close();
 
@@ -52,12 +53,11 @@ bool SortingCompetition::readData()
 
 bool SortingCompetition::prepareData()
 {
-	maxdepth/* = log(buckets[x].size())*/;
 	int count  = 0; 
 	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
 	{
-		int size = words[x].size();
+		int size = words[x]->size();
 		//if (buckets[size].size() == 0)
 	//	{
 	//		bool exists = false;
@@ -80,7 +80,7 @@ void SortingCompetition::sortData()
 
 	for (int i = 0; i < wordsCopy.size(); i++)
 	{
-		int size = words[i].size();
+		int size = words[i]->size();
 		buckets[size].push_back(wordsCopy[i]);
 	}
 	for (int x = 0; x < buckets.size(); x++)
@@ -124,7 +124,6 @@ void SortingCompetition::selectionSort(int x)
 			buckets[x][tracker] = temp;
 		}
 	}
-
 }
 void SortingCompetition::bubbleSort(int x)
 {
@@ -161,8 +160,8 @@ void SortingCompetition::quickSort(int x)
 	}
 	int i1=0;
 	int i2=0;
-	string less;
-	string greater;
+	string* less;
+	string* greater;
 
 	while(i1 < buckets[x].size())
 	{
@@ -170,9 +169,9 @@ void SortingCompetition::quickSort(int x)
 		if(buckets[x][i1] < buckets[x][medianIndex])
 		{
 			less = buckets[x][i1];
-			while(!(buckets[x][i2] > buckets[x][medianIndex]) && i2 < buckets[x].size())
+			while(!(*buckets[x][i2] > *buckets[x][medianIndex]) && i2 < buckets[x].size())
 			{
-				if(buckets[x][i2] > buckets[x][medianIndex])
+				if(*buckets[x][i2] > *buckets[x][medianIndex])
 				{
 					//Swap, however this doesn't guarentee that theyre on the right side of the median.  
 					//Maybe I need to put the median directly in the middle of the vector?
@@ -182,7 +181,7 @@ void SortingCompetition::quickSort(int x)
 				}
 			}
 		}
-		else if(buckets[x][i1] > buckets[x][medianIndex])
+		else if(*buckets[x][i1] > *buckets[x][medianIndex])
 		{
 			greater = buckets[x][i1];
 		}
@@ -226,9 +225,9 @@ void SortingCompetition::quickSort2(int a, int start, int end)
 }
 int SortingCompetition::median(int a, int p, int r) 
 {
-	string x = buckets[a][p];
-	string y = buckets[a][(r - p) / 2 + p];
-	string z = buckets[a][r - 1];
+	string x = *buckets[a][p];
+	string y = *buckets[a][(r - p) / 2 + p];
+	string z = *buckets[a][r - 1];
 	//string y = buckets[a][(r-p) / 4]
 	//string z = buckets[a][(r-p) / 2 + p]
 	//string a = buckets[a][p]
@@ -245,16 +244,16 @@ int SortingCompetition::median(int a, int p, int r)
 		do 
 		{ 
 			j--;
-		} while (buckets[a][j] > x);
+		} while (*buckets[a][j] > x);
 
 		do 
 		{ 
 			i++;
-		} while (buckets[a][i] < x);
+		} while (*buckets[a][i] < x);
 
 		if (i < j)
 		{
-			string temp = buckets[a][i]; 
+			string* temp = buckets[a][i]; 
 			buckets[a][i] = buckets[a][j];
  			buckets[a][j] = temp; 
 		}
@@ -270,9 +269,9 @@ void SortingCompetition::insertionSort(int a, int start, int end)
 {
     for (int x = start + 1; x < end; x++)
     {
-        string val = buckets[a][x];
-        int j = x - 1;
-        while (j >= 0 && val < buckets[a][j])
+        string* val = buckets[a][x];
+	int j = x - 1;
+        while (j >= 0 && *val < *buckets[a][j])
         {
             buckets[a][j + 1] = buckets[a][j];
             j--;
@@ -280,9 +279,9 @@ void SortingCompetition::insertionSort(int a, int start, int end)
         buckets[a][j + 1] = val;
     }
 }
-void SortingCompetition::swap(string &x, string &y)
+void SortingCompetition::swap(string* &x, string* &y)
 {
-	string temp = x; 
+	string* temp = x; 
 	x = y; 
 	y = temp;
 }
