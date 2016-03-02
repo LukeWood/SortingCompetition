@@ -90,6 +90,7 @@ void SortingCompetition::sortData()
 	for (int x = 0; x < buckets.size(); x++)
 	{
 		//selectionSort(x);
+	//	introSort(x);
 		quickSort2(x, 0, buckets[x].size()); 
 		//sort(buckets[x].begin(),buckets[x].end()); 
 	} 
