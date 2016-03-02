@@ -29,6 +29,7 @@ void SortingCompetition::setFileName(const string& inputFileName)
 //Reads data in.
 bool SortingCompetition::readData()
 {
+	clearMemory();
 	//Also im trying to decide if c_strings are a better option or strings, we'll have to see if strcmp is significantly faster than comparing strings
 	//There might be some other way to compare strings I kind of forgot.
 	if (fname == "")
@@ -53,12 +54,11 @@ bool SortingCompetition::readData()
 
 SortingCompetition::~SortingCompetition()
 {
-	clearMemory(false);
+	clearMemory();
 }
 
 bool SortingCompetition::prepareData()
 {	
-	clearMemory(true);
 	int count  = 0; 
 	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
@@ -83,7 +83,6 @@ bool SortingCompetition::prepareData()
 
 void SortingCompetition::sortData()
 {
-
 	for (int i = 0; i < wordsCopy.size(); i++)
 	{
 		int size = words[i]->size();
@@ -258,28 +257,12 @@ void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth)
 	}
 }
 
-void SortingCompetition::clearMemory(bool nwords)
+void SortingCompetition::clearMemory()
 {
-	if(nwords)
+	for(int i = 0; i < words.size(); i++)
 	{
-		for(int i = 0; i < words.size(); i++)
-		{
-			delete[] words[i];
-		}
-		words.clear();
+		delete[] words[i];
 	}
-	for(int i = 0; i < wordsCopy.size(); i++)
-	{
-		delete[] wordsCopy[i];
-	}
-	wordsCopy.clear();
-	for(int i = 0; i < buckets.size(); i++)
-	{
-		for(int j = 0; j < buckets[i].size(); j++)
-		{
-			delete[] buckets[i][j];
-		}
-		buckets[i].clear();
-	}	
-	buckets.clear();
+	words.clear();
+	buckets.clear();	
 }

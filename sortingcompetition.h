@@ -39,7 +39,7 @@ private:
 	void introSort(int);
 
 	void innerIntroSort(int, int, int, int);
-	void clearMemory(bool);
+	void clearMemory();
 
 public:
 
