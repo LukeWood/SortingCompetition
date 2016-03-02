@@ -102,7 +102,7 @@ void SortingCompetition::outputData(const string& outputFileName)
 	{
 		for (int k = 0; k < buckets[i].size(); k++)
 		{
-			out << buckets[i][k] + '\n'; 
+			out << *buckets[i][k] + '\n'; 
 		}
 	}
 }
