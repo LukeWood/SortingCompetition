@@ -31,7 +31,6 @@ private:
 	void swap(string* &, string* &);
 	void selectionSort(int);
 	void bubbleSort(int);
-	void quickSort(int);
 	void heapSort(int,int,int);
 
 	int findMedian(const string& first,const string& second,const string& third) const; 
