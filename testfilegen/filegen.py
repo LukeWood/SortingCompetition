@@ -1,6 +1,6 @@
 import random
 import string
-numwords = 20000
+numwords = 2000000
 with open("test.txt","w+") as f:
 	f.write(str(numwords))
 	f.write('\n')
