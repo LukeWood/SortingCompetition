@@ -64,19 +64,8 @@ bool SortingCompetition::prepareData()
 	for (int x = 0; x < words.size(); x++)
 	{
 		int size = words[x]->size();
-	//	if (buckets[size].size() == 0)
-	//	{
-	//		bool exists = false;
-	//		for (int x = 0; x < usedBuckets.size(); x++)
-	//			if (size == strtol(words[x].c_str(), NULL, 10))
-	//				exists = true;
-	//		if (!exists)
-	//			usedBuckets.push_back(size);
-	//	}
-		buckets[size].reserve(buckets[size].size() + size);
+		buckets[size].reserve(buckets[size].size() + 1);
 		wordsCopy.push_back(words[x]); 
-		//cout << count++ << "\n"; 
-		
 	}
 	return true;
 }
