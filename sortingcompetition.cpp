@@ -64,7 +64,7 @@ bool SortingCompetition::prepareData()
 	for (int x = 0; x < words.size(); x++)
 	{
 		int size = words[x]->size();
-		buckets[size].reserve(buckets[size].size() + 1);
+		buckets[size].reserve(buckets[size].capacity() + 1);
 		wordsCopy.push_back(words[x]); 
 	}
 	return true;
