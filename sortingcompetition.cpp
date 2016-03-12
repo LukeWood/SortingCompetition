@@ -9,25 +9,25 @@
 #include <cmath>
 using namespace std;
 
-SortingCompetition::SortingCompetition()
+sortingcompetition::sortingcompetition()
 {
 	fname = "";
 }
 
 //Pretty simple constructor, does exactly what you'd expect.
-SortingCompetition::SortingCompetition(const string& inputFileName)
+sortingcompetition::sortingcompetition(const string& inputFileName)
 {
 	fname = inputFileName;
 }
 
 //Changes the filename
-void SortingCompetition::setFileName(const string& inputFileName)
+void sortingcompetition::setFileName(const string& inputFileName)
 {
 	fname = inputFileName;
 }
 
 //Reads data in.
-bool SortingCompetition::readData()
+bool sortingcompetition::readData()
 {
 	clearMemory();
 	//Also im trying to decide if c_strings are a better option or strings, we'll have to see if strcmp is significantly faster than comparing strings
@@ -52,12 +52,12 @@ bool SortingCompetition::readData()
 	return true;
 }
 
-SortingCompetition::~SortingCompetition()
+sortingcompetition::~sortingcompetition()
 {
 	clearMemory();
 }
 
-bool SortingCompetition::prepareData()
+bool sortingcompetition::prepareData()
 {	
 	int count  = 0; 
 	buckets.resize(81);
@@ -70,7 +70,7 @@ bool SortingCompetition::prepareData()
 	return true;
 }
 
-void SortingCompetition::sortData()
+void sortingcompetition::sortData()
 {
 	for (int i = 0; i < wordsCopy.size(); i++)
 	{
@@ -85,7 +85,7 @@ void SortingCompetition::sortData()
 	} 
 }
 
-void SortingCompetition::outputData(const string& outputFileName)
+void sortingcompetition::outputData(const string& outputFileName)
 {
 	ofstream out(outputFileName.c_str());
 	for (int i = 1; i < buckets.size(); i++)
@@ -97,7 +97,7 @@ void SortingCompetition::outputData(const string& outputFileName)
 	}
 }
 
-void SortingCompetition::selectionSort(int x)
+void sortingcompetition::selectionSort(int x)
 {
 	int tracker;
 	string* temp;
@@ -119,7 +119,7 @@ void SortingCompetition::selectionSort(int x)
 		}
 	}
 }
-void SortingCompetition::bubbleSort(int x)
+void sortingcompetition::bubbleSort(int x)
 {
 	string* temp;
 	for(int i = 0; i < buckets[x].size(); i++)
@@ -136,7 +136,7 @@ void SortingCompetition::bubbleSort(int x)
 	}
 }
 
-void SortingCompetition::quickSort2(int a, int start, int end) 
+void sortingcompetition::quickSort2(int a, int start, int end) 
 {
 	int med;
 	if (end - start<2) 
@@ -152,7 +152,7 @@ void SortingCompetition::quickSort2(int a, int start, int end)
 		quickSort2(a, med, end);
 	}
 }
-int SortingCompetition::median(int a, int p, int r) 
+int sortingcompetition::median(int a, int p, int r) 
 {
 	string x = *buckets[a][p];
 	string y = *buckets[a][(r - p) / 2 + p];
@@ -194,7 +194,7 @@ int SortingCompetition::median(int a, int p, int r)
 	}
 }
 
-void SortingCompetition::insertionSort(int a, int start, int end)
+void sortingcompetition::insertionSort(int a, int start, int end)
 {
     for (int x = start + 1; x < end; x++)
     {
@@ -208,25 +208,25 @@ void SortingCompetition::insertionSort(int a, int start, int end)
         buckets[a][j + 1] = val;
     }
 }
-void SortingCompetition::swap(string* &x, string* &y)
+void sortingcompetition::swap(string* &x, string* &y)
 {
 	string* temp = x; 
 	x = y; 
 	y = temp;
 }
 
-inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
+inline int sortingcompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
 {	
 	return 0;
 }
 
-void SortingCompetition::introSort(int x)
+void sortingcompetition::introSort(int x)
 {
 	maxdepth = log2(buckets[x].size());
 	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
-void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
+void sortingcompetition::innerIntroSort(int x, int start, int end,int currdepth) 
 {
 	//This might need to be a different value
 	if(end-start <=2)
@@ -243,7 +243,7 @@ void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth)
 	}
 }
 
-void SortingCompetition::clearMemory()
+void sortingcompetition::clearMemory()
 {
 	for(int i = 0; i < words.size(); i++)
 	{

@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-class SortingCompetition
+class sortingcompetition
 {
 private:
 	//You are free to determine your own internal
@@ -45,9 +45,9 @@ public:
 
 	//basic constructor that accepts an input
 	//file name
-	SortingCompetition();
-	SortingCompetition(const string& inputFileName);
-	~SortingCompetition();
+	sortingcompetition();
+	sortingcompetition(const string& inputFileName);
+	~sortingcompetition();
 
 	//set the input file name
 	void setFileName(const string& inputFileName);
