@@ -67,6 +67,7 @@ bool SortingCompetition::prepareData()
 		buckets[size].reserve(buckets[size].capacity() + 1);
 		wordsCopy.push_back(words[x]); 
 	}
+	equalVals.reserve(numWords); 
 	return true;
 }
 
@@ -87,6 +88,7 @@ void SortingCompetition::sortData()
 
 void SortingCompetition::outputData(const string& outputFileName)
 {
+	outName = outputFileName; 
 	ofstream out(outputFileName.c_str());
 	for (int i = 1; i < buckets.size(); i++)
 	{
@@ -95,9 +97,10 @@ void SortingCompetition::outputData(const string& outputFileName)
 			out << *buckets[i][k] + '\n'; 
 		}
 	}
+	out.close(); 
 }
 
-void SortingCompetition::selectionSort(int x)
+inline void SortingCompetition::selectionSort(int x)
 {
 	int tracker;
 	string* temp;
@@ -119,7 +122,7 @@ void SortingCompetition::selectionSort(int x)
 		}
 	}
 }
-void SortingCompetition::bubbleSort(int x)
+inline void SortingCompetition::bubbleSort(int x)
 {
 	string* temp;
 	for(int i = 0; i < buckets[x].size(); i++)
@@ -136,12 +139,13 @@ void SortingCompetition::bubbleSort(int x)
 	}
 }
 
-void SortingCompetition::quickSort2(int a, int start, int end) 
+inline void SortingCompetition::quickSort2(int a, int start, int end) 
 {
+
 	int med;
 	if (end - start<2) 
 		return;
-	if (end - start < 9)
+	if (end - start <= 15)
         {
         	insertionSort(a, start, end);
         }
@@ -152,7 +156,23 @@ void SortingCompetition::quickSort2(int a, int start, int end)
 		quickSort2(a, med, end);
 	}
 }
-int SortingCompetition::median(int a, int p, int r) 
+string SortingCompetition::isSorted()
+{
+	ifstream read(outName.c_str(), ios::in);
+	string temp;
+	string temp2; 
+	read >> temp; 
+	read >> temp2; 
+	string order = "true"; 
+	for (int i = 0; i < numWords - 1; i++)
+	{
+		if (temp < temp2); 
+		else
+			order = "false"; 
+	}
+	return order; 
+}
+inline int SortingCompetition::median(int a, int p, int r) 
 {
 	string x = *buckets[a][p];
 	string y = *buckets[a][(r - p) / 2 + p];
@@ -172,13 +192,14 @@ int SortingCompetition::median(int a, int p, int r)
 	{
 		do 
 		{ 
-			j--;
-		} while (*buckets[a][j] > x);
+			i++;
+		} while (*buckets[a][i] < x);
 
 		do 
 		{ 
-			i++;
-		} while (*buckets[a][i] < x);
+			j--;
+		} while (*buckets[a][j] > x);
+
 
 		if (i < j)
 		{
@@ -187,14 +208,13 @@ int SortingCompetition::median(int a, int p, int r)
  			buckets[a][j] = temp; 
 		}
 		else 
-		{
-		//cout << count2++; 
-		return j + 1;
+		{	
+			return j + 1;
 		}
 	}
 }
 
-void SortingCompetition::insertionSort(int a, int start, int end)
+inline void SortingCompetition::insertionSort(int a, int start, int end)
 {
     for (int x = start + 1; x < end; x++)
     {
@@ -208,7 +228,30 @@ void SortingCompetition::insertionSort(int a, int start, int end)
         buckets[a][j + 1] = val;
     }
 }
-void SortingCompetition::swap(string* &x, string* &y)
+
+inline void SortingCompetition::shellSort(int a,int start, int end)   
+{
+    int j= start;
+    int d = (pow(3.0,j)-1) / 2;
+
+
+    while(d < ceil(end/3))
+    {
+        for(int i=d;i<end;i++)
+            {
+                string tmp = *buckets[a][i];
+                int k;
+                for(k = i; k >= d && *buckets[a][k-d] < tmp; k -= d)
+               		buckets[a][k] = buckets[a][k-d];
+                *buckets[a][k] = tmp;
+            }
+        j++;
+        d = (pow(3.0,j)-1) / 2;
+    }
+
+}
+
+inline void SortingCompetition::swap(string* &x, string* &y)
 {
 	string* temp = x; 
 	x = y; 
@@ -220,30 +263,30 @@ inline int SortingCompetition::findMedian5(const string& first,const string& sec
 	return 0;
 }
 
-void SortingCompetition::introSort(int x)
+inline void SortingCompetition::introSort(int x)
 {
-	maxdepth = log2(buckets[x].size());
-	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
+//	maxdepth = log2(buckets[x].size());
+//	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
-void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
+inline void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
 {
 	//This might need to be a different value
-	if(end-start <=2)
-		return;
-	else if(currdepth == 0)
-	{
-		insertionSort(x,start,end);
-	}
-	else
-	{
-		int med = median(x,start,end);
-		innerIntroSort(x,start,med, currdepth-1);
-		innerIntroSort(x,med,end, currdepth-1);
-	}
+//	if(end-start <=2)
+//		return;
+//	else if(currdepth == 0)
+//	{
+//		insertionSort(x,start,end);
+//	}
+//	else
+//	{
+//		int* med = median(x,start,end);
+//		innerIntroSort(x,start,med, currdepth-1);
+//		innerIntroSort(x,med,end, currdepth-1);
+//	}
 }
 
-void SortingCompetition::clearMemory()
+inline void SortingCompetition::clearMemory()
 {
 	for(int i = 0; i < words.size(); i++)
 	{

@@ -1,23 +1,38 @@
 #include <iostream>
-#include <cstdlib>
-#include "sortingcompetition.h"
+#include <chrono>
 #include <ctime>
+#include "sortingcompetition.h"
 
-using namespace std; 
+using namespace std;
 
-int main(int argc, char** argv)
+int main()
 {
-	SortingCompetition sort("test.txt"); 
-	cout<<"Reading data\n";
-	sort.readData(); 
-	cout<<"Data Read\n";
-	sort.prepareData(); 
-	cout<<"Data prepared\n";
-	clock_t begin = clock();
-	sort.sortData(); 
-	clock_t end = clock();
- 	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	cout<<"Data sorted: " << elapsed_secs << " Seconds";
-	sort.outputData("output.txt"); 
-	return 0; 
+
+    string fName = "test.txt";
+    SortingCompetition sc(fName);
+    sc.readData();
+    std::chrono::duration<double> esectot;
+    for(int i=0;i<5;++i)
+    {
+        sc.prepareData();
+        std::chrono::time_point<std::chrono::system_clock> start, end;
+        start = std::chrono::system_clock::now();
+        //sort function goes in here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        sc.sortData();
+        //sort function goes in here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        end = std::chrono::system_clock::now();
+
+        //subtract end from beginning to get number of seconds elapsed
+        std::chrono::duration<double> elapsed_seconds = end-start;
+        std::time_t end_time =
+        std::chrono::system_clock::to_time_t(end);
+        esectot+=elapsed_seconds;
+        //output the duration.
+        std::cout << "finished computation at " << std::ctime(&end_time)
+                  << "elapsed time: " << elapsed_seconds.count() << "s\n";
+    }
+    esectot/=5;
+    cout << esectot.count() << endl;
+
+    sc.outputData("sorted.txt");
 }
