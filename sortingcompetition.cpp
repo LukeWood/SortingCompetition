@@ -246,7 +246,7 @@ inline void SortingCompetition::swap(string* &x, string* &y)
 	y = temp;
 }
 
-inline int sortingcompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
+inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
 {	
 	return 0;
 }
