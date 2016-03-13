@@ -17,6 +17,7 @@ private:
 
 	string fname;
 	int numWords;
+	string outName; 
 	int count2;
 
 	int maxdepth;
@@ -24,14 +25,17 @@ private:
 	vector<string*> words;
 	vector<string*> wordsCopy; 
 	vector<int> usedBuckets;
+	vector<int> equalVals; 
 	vector<vector<string*> > buckets;
 
 	int median(int, int, int);
 	void quickSort2(int, int, int); 
 	void swap(string* &, string* &);
+	void shellSort(int a,int start, int n); 
 	void selectionSort(int);
 	void bubbleSort(int);
 	void heapSort(int,int,int);
+	string isSorted();
 
 	int findMedian(const string& first,const string& second,const string& third) const; 
 	int findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const;
