@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 {
 	ofstream out("quickintrographresults.txt");
 	sortingcompetition sort;
-        for(int i = 1; i < 2; i++)
+        for(int i = 1; i < 15; i++)
 	{
 		string fname = to_string(i*125000);
 		fname+=".txt";
@@ -24,11 +24,11 @@ int main(int argc, char** argv)
 		sort.sortData();
 		clock_t end = clock();
 		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-		out<<setprecision(51)<<elapsed_secs<<'\n';
+		out<<elapsed_secs<<'\n';
 	} 
 	out.close();
 	out.open("quickgraphresults.txt");
-        for(int i = 1; i < 2; i++)
+        for(int i = 1; i < 15; i++)
 	{
 		string fname = std::to_string(i*125000);
 		fname+=".txt";
@@ -40,11 +40,11 @@ int main(int argc, char** argv)
 		sort.soloQuickSort();
 		clock_t end = clock();
 		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-		out<<setprecision(51)<<elapsed_secs<<'\n';
+		out<<elapsed_secs<<'\n';
 	}
 	out.close();
 	out.open("selectiongraphresults.txt");
-        for(int i = 1; i < 2; i++)
+        for(int i = 1; i < 15; i++)
 	{
 		string fname = std::to_string(i*125000);
 		fname+=".txt";
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 		sort.selectionSortData();
 		clock_t end = clock();
 		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-		out<<setprecision(51)<<elapsed_secs<<'\n';
+		out<<elapsed_secs<<'\n';
 	} 
 	out.close();
 	return 0; 
