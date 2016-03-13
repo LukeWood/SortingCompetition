@@ -122,6 +122,7 @@ inline void SortingCompetition::selectionSort(int x)
 		}
 	}
 }
+
 inline void SortingCompetition::bubbleSort(int x)
 {
 	string* temp;
@@ -138,6 +139,7 @@ inline void SortingCompetition::bubbleSort(int x)
 		}
 	}
 }
+
 
 inline void SortingCompetition::quickSort2(int a, int start, int end) 
 {
@@ -156,22 +158,8 @@ inline void SortingCompetition::quickSort2(int a, int start, int end)
 		quickSort2(a, med, end);
 	}
 }
-string SortingCompetition::isSorted()
-{
-	ifstream read(outName.c_str(), ios::in);
-	string temp;
-	string temp2; 
-	read >> temp; 
-	read >> temp2; 
-	string order = "true"; 
-	for (int i = 0; i < numWords - 1; i++)
-	{
-		if (temp < temp2); 
-		else
-			order = "false"; 
-	}
-	return order; 
-}
+
+
 inline int SortingCompetition::median(int a, int p, int r) 
 {
 	string x = *buckets[a][p];
@@ -258,7 +246,7 @@ inline void SortingCompetition::swap(string* &x, string* &y)
 	y = temp;
 }
 
-inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
+inline int sortingcompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
 {	
 	return 0;
 }
@@ -285,6 +273,7 @@ inline void SortingCompetition::innerIntroSort(int x, int start, int end,int cur
 //		innerIntroSort(x,med,end, currdepth-1);
 //	}
 }
+
 
 inline void SortingCompetition::clearMemory()
 {

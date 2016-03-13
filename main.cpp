@@ -36,3 +36,4 @@ int main()
 
     sc.outputData("sorted.txt");
 }
+
