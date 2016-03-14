@@ -2,7 +2,7 @@ import random
 import string
 numwords = 25000
 fname = str(numwords) + ".txt"
-for a in range(1,10):
+for a in range(1,11):
 	with open(fname,"w+") as f:
 		f.write(str(numwords))
 		f.write('\n')

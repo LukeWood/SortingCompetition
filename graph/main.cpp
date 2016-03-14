@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 {
 	ofstream out("quickintrographresults.txt");
 	sortingcompetition sort;
-        for(int i = 1; i < 10; i++)
+        for(int i = 1; i < 11; i++)
 	{
 		string fname = to_string(i*25000);
 		fname+=".txt";
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 	} 
 	out.close();
 	out.open("quickgraphresults.txt");
-        for(int i = 1; i < 10; i++)
+        for(int i = 1; i < 11; i++)
 	{
 		string fname = std::to_string(i*25000);
 		fname+=".txt";
@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 	}
 	out.close();
 	out.open("selectiongraphresults.txt");
-        for(int i = 1; i < 10; i++)
+        for(int i = 1; i < 11; i++)
 	{
 		string fname = std::to_string(i*25000);
 		fname+=".txt";
