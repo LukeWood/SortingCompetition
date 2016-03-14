@@ -12,12 +12,12 @@ int main(int argc, char** argv)
 {
 	ofstream out("quickintrographresults.txt");
 	sortingcompetition sort;
-        for(int i = 1; i < 17; i++)
+        for(int i = 1; i < 10; i++)
 	{
-		string fname = to_string(i*125000);
+		string fname = to_string(i*25000);
 		fname+=".txt";
 		sort.setFileName(fname);
-		out<<to_string(i*125000)<<" ";
+		out<<to_string(i*25000)<<" ";
 		sort.readData();
 		sort.prepareData();
 		clock_t begin = clock();
@@ -28,12 +28,12 @@ int main(int argc, char** argv)
 	} 
 	out.close();
 	out.open("quickgraphresults.txt");
-        for(int i = 1; i < 17; i++)
+        for(int i = 1; i < 10; i++)
 	{
-		string fname = std::to_string(i*125000);
+		string fname = std::to_string(i*25000);
 		fname+=".txt";
 		sort.setFileName(fname);
-		out<<to_string(i*125000)<<" ";
+		out<<to_string(i*25000)<<" ";
 		sort.readData();
 		sort.prepareData();
 		clock_t begin = clock();
@@ -44,12 +44,12 @@ int main(int argc, char** argv)
 	}
 	out.close();
 	out.open("selectiongraphresults.txt");
-        for(int i = 1; i < 17; i++)
+        for(int i = 1; i < 10; i++)
 	{
-		string fname = std::to_string(i*125000);
+		string fname = std::to_string(i*25000);
 		fname+=".txt";
 		sort.setFileName(fname);
-		out<<to_string(i*125000)<<" ";
+		out<<to_string(i*25000)<<" ";
 		sort.readData();
 		sort.prepareData();
 		clock_t begin = clock();
