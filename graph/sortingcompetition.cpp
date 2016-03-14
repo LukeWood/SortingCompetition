@@ -74,7 +74,16 @@ void sortingcompetition::soloQuickSort()
 
 void sortingcompetition::selectionSortData()
 {
-
+	for (int i = 0; i < wordsCopy.size(); i++)
+	{
+		int size = words[i]->size();
+		buckets[size].push_back(wordsCopy[i]);
+	}
+	for (int x = 0; x < buckets.size(); x++)
+	{
+		selectionSort(x);
+		//sort(buckets[x].begin(),buckets[x].end()); 
+	} 
 }
 
 bool sortingcompetition::prepareData()
