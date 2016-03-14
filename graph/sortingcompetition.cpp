@@ -59,7 +59,17 @@ sortingcompetition::~sortingcompetition()
 
 void sortingcompetition::soloQuickSort()
 {
-
+	for (int i = 0; i < wordsCopy.size(); i++)
+	{
+		int size = words[i]->size();
+		buckets[size].push_back(wordsCopy[i]);
+	}
+	for (int x = 0; x < buckets.size(); x++)
+	{
+		//selectionSort(x);
+		soloquickSort2(x, 0, buckets[x].size()); 
+		//sort(buckets[x].begin(),buckets[x].end()); 
+	} 
 }
 
 void sortingcompetition::selectionSortData()
@@ -144,6 +154,16 @@ void sortingcompetition::bubbleSort(int x)
 			}
 		}
 	}
+}
+
+void sortingcompetition::soloquickSort2(int a, int start, int end) 
+{
+	int med;
+	if (end - start<2) 
+		return;
+		med = median(a, start, end);
+		soloquickSort2(a, start, med);
+		soloquickSort2(a, med, end);
 }
 
 void sortingcompetition::quickSort2(int a, int start, int end) 
