@@ -1,8 +1,8 @@
 import random
 import string
-numwords = 125000
+numwords = 1875000
 fname = str(numwords) + ".txt"
-for a in range(1,15):
+for a in range(1,3):
 	with open(fname,"w+") as f:
 		f.write(str(numwords))
 		f.write('\n')
