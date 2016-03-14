@@ -19,7 +19,64 @@ int main()
 		second.push_back(temp2);
 	}
 	in.close();
+
 	out.open("script.m");
-	for(int i = 0; 
+	out<<"x = [";
+	for(int i = 0;  i < 8; i++)
+	{
+		out<<first[i]<<',';
+	}
+	out<<first[8];
+	out<<"];\n";
+	out<<"quicky=[";
+	for(int i = 0; i < 8; i++)
+	{
+		out<<second[i]<<',';
+	}
+	out<<second[8]<<"];\n";
+	second.clear();
+	
+	in.open("quickintro.txt");
+	for(int i = 0; i < 9; i++)
+	{
+		int temp;
+		double temp2;
+		in>>temp;
+		in>>temp2;
+		first.push_back(temp);
+		second.push_back(temp2);
+	}
+	in.close();
+
+	out<<"quickintroy=[";
+	for(int i = 0; i < 8; i++)
+	{
+		out<<second[i]<<',';
+	}
+	out<<second[8]<<"];\n";
+	second.clear();
+
+	
+	in.open("selection.txt");
+	for(int i = 0; i < 9; i++)
+	{
+		int temp;
+		double temp2;
+		in>>temp;
+		in>>temp2;
+		first.push_back(temp);
+		second.push_back(temp2);
+	}
+	in.close();
+
+	out<<"selectiony=[";
+	for(int i = 0; i < 8; i++)
+	{
+		out<<second[i]<<',';
+	}
+	out<<second[8]<<"];\n";
+	second.clear();
+
+	out.close();
 	return 0;
 }
