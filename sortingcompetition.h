@@ -1,3 +1,14 @@
+/*
+Course Number:  <2343>
+Programmer:     <Momin Irfan, Luke Wood>
+Date:           <03-14-2016>
+Program Number: Sorting Competition
+Purpose:	Sorts data read from file
+Server:			<genuse1>
+Instructor:		<Fontenot>
+TA:             <Canon>
+Sources Consulted: <StackoverFlow,cs.Princeton, drdobbs.com, wikipedia, sotingalgorithms.com, codelab, researchgate, stoimen >
+*/
 #pragma once
 #include <string>
 #include <vector>
@@ -19,7 +30,6 @@ private:
 	int numWords;
 	string outName; 
 	int count2;
-
 	int maxdepth;
 
 	vector<string*> words;
@@ -35,13 +45,9 @@ private:
 	void selectionSort(int);
 	void bubbleSort(int);
 	void heapSort(int,int,int);
-	string isSorted();
-
 	int findMedian(const string& first,const string& second,const string& third) const; 
-	int findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const;
 	void insertionSort(int,int,int); 
 	void introSort(int);
-
 	void innerIntroSort(int, int, int, int);
 	void clearMemory();
 

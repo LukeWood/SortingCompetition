@@ -1,3 +1,15 @@
+/*
+Course Number:  <2343>
+Programmer:     <Momin Irfan, Luke Wood>
+Date:           <03-14-2016>
+Program Number: Sorting Competition
+Purpose:	Sorts data read from file
+Server:			<genuse1>
+Instructor:		<Fontenot>
+TA:             <Canon>
+Sources Consulted: <StackoverFlow,cs.Princeton, drdobbs.com, wikipedia, sotingalgorithms.com, codelab, researchgate, stoimen >
+*/
+
 #include "sortingcompetition.h"
 #include <fstream>
 #include <vector>
@@ -5,28 +17,35 @@
 #include <string>
 #include <cstring>
 #include <cstdlib>
-#include <algorithm>
 #include <cmath>
 using namespace std;
 
+/** constucts obect with no file name
+*/
 SortingCompetition::SortingCompetition()
 {
 	fname = "";
 }
 
-//Pretty simple constructor, does exactly what you'd expect.
+/** constucts obect with filename
+@param inputFileName name of input file
+*/
 SortingCompetition::SortingCompetition(const string& inputFileName)
 {
 	fname = inputFileName;
 }
 
-//Changes the filename
+/** cahnges filename
+@param inputFileName name of input file
+*/
 void SortingCompetition::setFileName(const string& inputFileName)
 {
 	fname = inputFileName;
 }
 
-//Reads data in.
+/**Reads data in.
+@return whether data read or not
+*/
 bool SortingCompetition::readData()
 {
 	for(int i = 0; i < words.size(); i++)
@@ -54,11 +73,16 @@ bool SortingCompetition::readData()
 	return true;
 }
 
+/** destructs obects dynamic memory
+*/
 SortingCompetition::~SortingCompetition()
 {
 	clearMemory();
 }
 
+/** prepares empty data structure to store sorted objects in 
+@return whether or not data prepared
+*/
 bool SortingCompetition::prepareData()
 {	 
 	wordsCopy.clear(); 
@@ -68,28 +92,31 @@ bool SortingCompetition::prepareData()
 	for (int x = 0; x < words.size(); x++)
 	{
 		int size = words[x]->size();
-		buckets[size].reserve(buckets[size].capacity() + 1);
+		buckets[size].reserve(buckets[size].capacity() + 1); //reserving memory to avoid new calls
 		wordsCopy.push_back(words[x]); 
 	}
 	equalVals.reserve(numWords); 
 	return true;
 }
 
+/** sorts the data in each bucket 
+*/
 void SortingCompetition::sortData()
 {
 	for (int i = 0; i < wordsCopy.size(); i++)
 	{
 		int size = words[i]->size();
-		buckets[size].push_back(wordsCopy[i]);
+		buckets[size].push_back(wordsCopy[i]); //fill each bucket with the correct value
 	}
 	for (int x = 0; x < buckets.size(); x++)
 	{
-		//selectionSort(x);
-		quickSort2(x, 0, buckets[x].size()); 
-		//sort(buckets[x].begin(),buckets[x].end()); 
+		quickSort2(x, 0, buckets[x].size()); //quicksort the elements 
 	} 
 }
 
+/** outputs sorted data to file
+@param outputFileName name of output file
+*/
 void SortingCompetition::outputData(const string& outputFileName)
 {
 	outName = outputFileName; 
@@ -104,6 +131,9 @@ void SortingCompetition::outputData(const string& outputFileName)
 	out.close(); 
 }
 
+/** implementation of selection sort 
+@param x where to begin
+*/
 inline void SortingCompetition::selectionSort(int x)
 {
 	int tracker;
@@ -127,6 +157,9 @@ inline void SortingCompetition::selectionSort(int x)
 	}
 }
 
+/** implementation of bubble sort 
+@param x where to begin
+*/
 inline void SortingCompetition::bubbleSort(int x)
 {
 	string* temp;
@@ -134,7 +167,7 @@ inline void SortingCompetition::bubbleSort(int x)
 	{
 		for(int j = 0;  j < buckets[x].size()-1; j++)
 		{
-			if(*buckets[x][j] < *buckets[x][j+1])
+			if(*buckets[x][j] < *buckets[x][j+1]) //if less than, swap
 			{
 				temp = buckets[x][j+1];
 				buckets[x][j+1] = buckets[x][j];
@@ -145,17 +178,22 @@ inline void SortingCompetition::bubbleSort(int x)
 }
 
 
+/** implementation of quick sort 
+@param a bucket being sorted
+@param start where to start sorting
+@param end where to end sorting
+*/
 inline void SortingCompetition::quickSort2(int a, int start, int end) 
 {
 
 	int med;
-	if (end - start<2) 
+	if (end - start<2) //test if done partitioning
 		return;
-	if (end - start <= 15)
+	if (end - start <= 15) //if data set is small move to insertion sort
         {
         	insertionSort(a, start, end);
         }
-	else
+	else //partition and recurse
 	{
 		med = median(a, start, end);
 		quickSort2(a, start, med);
@@ -164,36 +202,43 @@ inline void SortingCompetition::quickSort2(int a, int start, int end)
 }
 
 
+/** implementation of median of three and partitioning
+@param a bucket being sorted
+@param p where to start sorting
+@param r where to end sorting
+@return postition of pivot
+*/
 inline int SortingCompetition::median(int a, int p, int r) 
 {
-	string x = *buckets[a][p];
+	//set key values
+	string x = *buckets[a][p]; 
 	string y = *buckets[a][(r - p) / 2 + p];
 	string z = *buckets[a][r - 1];
-	//string y = buckets[a][(r-p) / 4]
-	//string z = buckets[a][(r-p) / 2 + p]
-	//string a = buckets[a][p]
-	//string b = buckets[a][p]
-	
+
 	int i = p - 1; 
 	int j = r;
+	
+	//find median
 	if (y>x && y<z || y>z && y<x) 
 		x = y;
 	else if (z>x && z<y || z>y && z<x) 
 		x = z;
+	
+	//find pivot location
 	while (true) 
 	{
 		do 
 		{ 
 			i++;
-		} while (*buckets[a][i] < x);
+		} while (*buckets[a][i] < x); //look for value greater than pivot
 
 		do 
 		{ 
 			j--;
-		} while (*buckets[a][j] > x);
+		} while (*buckets[a][j] > x); //look for value smaller than pivot
 
 
-		if (i < j)
+		if (i < j) //still searching, swap elements
 		{
 			string* temp = buckets[a][i]; 
 			buckets[a][i] = buckets[a][j];
@@ -201,11 +246,16 @@ inline int SortingCompetition::median(int a, int p, int r)
 		}
 		else 
 		{	
-			return j + 1;
+			return j + 1; //return position of pivot
 		}
 	}
 }
 
+/** implementation of insertion sort 
+@param a bucket being sorted
+@param start where to start sorting
+@param end where to end sorting
+*/
 inline void SortingCompetition::insertionSort(int a, int start, int end)
 {
     for (int x = start + 1; x < end; x++)
@@ -214,20 +264,25 @@ inline void SortingCompetition::insertionSort(int a, int start, int end)
 	int j = x - 1;
         while (j >= 0 && *val < *buckets[a][j])
         {
-            buckets[a][j + 1] = buckets[a][j];
+            buckets[a][j + 1] = buckets[a][j]; 
             j--;
         }
         buckets[a][j + 1] = val;
     }
 }
 
+/** implementation of shell sort 
+@param a bucket being sorted
+@param start where to start sorting
+@param end where to end sorting
+*/
 inline void SortingCompetition::shellSort(int a,int start, int end)   
 {
     int j= start;
-    int d = (pow(3.0,j)-1) / 2;
+    int d = (pow(3.0,j)-1) / 2; //Knuths formula for gaps
 
 
-    while(d < ceil(end/3))
+    while(d < ceil(end/3)) //while still within the given gaps
     {
         for(int i=d;i<end;i++)
             {
@@ -237,12 +292,16 @@ inline void SortingCompetition::shellSort(int a,int start, int end)
                		buckets[a][k] = buckets[a][k-d];
                 *buckets[a][k] = tmp;
             }
-        j++;
+        j++; //increment gap
         d = (pow(3.0,j)-1) / 2;
     }
 
 }
 
+/** swaps two values 
+@param x string to swap
+@param y string to swap
+*/
 inline void SortingCompetition::swap(string* &x, string* &y)
 {
 	string* temp = x; 
@@ -250,20 +309,24 @@ inline void SortingCompetition::swap(string* &x, string* &y)
 	y = temp;
 }
 
-inline int SortingCompetition::findMedian5(const string& first,const string& second,const string& third,const string& fourth, const string& fifth) const
-{	
-	return 0;
-}
-
+/** implementation of introsort 
+@param x what bucket needs sorting
+*/
 inline void SortingCompetition::introSort(int x)
 {
 	maxdepth = log2(buckets[x].size());
 	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
+/** implementation of introsortsort 
+@param x bucket being sorted
+@param start where to start sorting
+@param end where to end sorting
+@param currdepth current depth of sort
+*/
 inline void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
 {
-//	This might need to be a different value
+
 	if(end-start <=2)
 		return;
 	else if(currdepth == 0)
@@ -278,7 +341,8 @@ inline void SortingCompetition::innerIntroSort(int x, int start, int end,int cur
 	}
 }
 
-
+/** clearsMemory, rids of dynamic memory
+*/
 inline void SortingCompetition::clearMemory()
 {
 	for(int i = 0; i < words.size(); i++)
