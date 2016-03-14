@@ -29,9 +29,11 @@ void SortingCompetition::setFileName(const string& inputFileName)
 //Reads data in.
 bool SortingCompetition::readData()
 {
-	clearMemory();
-	//Also im trying to decide if c_strings are a better option or strings, we'll have to see if strcmp is significantly faster than comparing strings
-	//There might be some other way to compare strings I kind of forgot.
+	for(int i = 0; i < words.size(); i++)
+	{
+		delete words[i];
+	}
+	words.clear();  
 	if (fname == "")
 	{
 		std::cout << "Please use a file name.\n";
@@ -58,7 +60,9 @@ SortingCompetition::~SortingCompetition()
 }
 
 bool SortingCompetition::prepareData()
-{	
+{	 
+	wordsCopy.clear(); 
+	buckets.clear();
 	int count  = 0; 
 	buckets.resize(81);
 	for (int x = 0; x < words.size(); x++)
@@ -253,25 +257,25 @@ inline int SortingCompetition::findMedian5(const string& first,const string& sec
 
 inline void SortingCompetition::introSort(int x)
 {
-//	maxdepth = log2(buckets[x].size());
-//	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
+	maxdepth = log2(buckets[x].size());
+	innerIntroSort(x,0,buckets[x].size(),maxdepth);	
 }
 
 inline void SortingCompetition::innerIntroSort(int x, int start, int end,int currdepth) 
 {
-	//This might need to be a different value
-//	if(end-start <=2)
-//		return;
-//	else if(currdepth == 0)
-//	{
-//		insertionSort(x,start,end);
-//	}
-//	else
-//	{
-//		int* med = median(x,start,end);
-//		innerIntroSort(x,start,med, currdepth-1);
-//		innerIntroSort(x,med,end, currdepth-1);
-//	}
+//	This might need to be a different value
+	if(end-start <=2)
+		return;
+	else if(currdepth == 0)
+	{
+		insertionSort(x,start,end);
+	}
+	else
+	{
+		int med = median(x,start,end);
+		innerIntroSort(x,start,med, currdepth-1);
+		innerIntroSort(x,med,end, currdepth-1);
+	}
 }
 
 
@@ -281,7 +285,7 @@ inline void SortingCompetition::clearMemory()
 	{
 		delete words[i];
 	}
-	words.clear();
+	words.clear(); 
 	wordsCopy.clear();
 	buckets.clear();	
 }
