@@ -22,22 +22,22 @@ int main()
 
 	out.open("script.m");
 	out<<"x = [";
-	for(int i = 0;  i < 8; i++)
+	for(int i = 0;  i < 9; i++)
 	{
 		out<<first[i]<<',';
 	}
-	out<<first[8];
+	out<<first[9];
 	out<<"];\n";
 	out<<"quicky=[";
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 9; i++)
 	{
 		out<<second[i]<<',';
 	}
-	out<<second[8]<<"];\n";
+	out<<second[9]<<"];\n";
 	second.clear();
 	
 	in.open("quickintro.txt");
-	for(int i = 0; i < 9; i++)
+	for(int i = 0; i < 10; i++)
 	{
 		int temp;
 		double temp2;
@@ -49,16 +49,16 @@ int main()
 	in.close();
 
 	out<<"quickintroy=[";
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 9; i++)
 	{
 		out<<second[i]<<',';
 	}
-	out<<second[8]<<"];\n";
+	out<<second[9]<<"];\n";
 	second.clear();
 
 	
 	in.open("selection.txt");
-	for(int i = 0; i < 9; i++)
+	for(int i = 0; i < 10; i++)
 	{
 		int temp;
 		double temp2;
@@ -70,11 +70,11 @@ int main()
 	in.close();
 
 	out<<"selectiony=[";
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 9; i++)
 	{
 		out<<second[i]<<',';
 	}
-	out<<second[8]<<"];\n";
+	out<<second[9]<<"];\n";
 	second.clear();
 
 	out.close();
